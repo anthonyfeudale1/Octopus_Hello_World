@@ -5,7 +5,7 @@ step "Run the Print Hello World Script" {
         properties = {
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptBody = <<-EOT
-                Write-Host "Hello, " $OctopusParameters["Helloworld.Greeting"] "!"
+                Write-Host "Hello," $OctopusParameters["Helloworld.Greeting"]"!"
                 
             EOT
             Octopus.Action.Script.ScriptSource = "Inline"
