@@ -4,7 +4,10 @@ step "Run the Print Hello World Script" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.RunOnServer = "true"
-            Octopus.Action.Script.ScriptBody = "Write-Host \"Hello, World!\""
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                Write-Host "Hello, " $OctopusParameters["Helloworld.Greeting"] "!"
+                
+            EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
