@@ -1,3 +1,18 @@
+step "Manual Intervention Required" {
+
+    action {
+        action_type = "Octopus.Manual"
+        environments = ["Production"]
+        notes = "Please verify the Production environment is ready before proceeding."
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "False"
+            Octopus.Action.Manual.Instructions = "Please verify the Production environment is ready before proceeding"
+            Octopus.Action.Manual.ResponsibleTeamIds = "Octopus Administrators"
+        }
+        worker_pool_variable = ""
+    }
+}
+
 step "Run the Print Hello World Script" {
 
     action {
