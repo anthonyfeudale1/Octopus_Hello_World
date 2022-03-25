@@ -14,11 +14,14 @@ step "Manual Intervention Required" {
 }
 
 step "Run the Print Hello World Script" {
+    properties = {
+        Octopus.Action.TargetRoles = "Hello_World_Role"
+    }
 
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = <<-EOT
                 Write-Host "Hello," $OctopusParameters["Helloworld.Greeting"]
                 
@@ -26,6 +29,5 @@ step "Run the Print Hello World Script" {
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
-        worker_pool = "Default Worker Pool"
     }
 }
